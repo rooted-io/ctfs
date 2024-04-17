@@ -130,7 +130,7 @@ echo "Flag Secret: $decoded_flag"
 echo "DB Secret: $decoded_db"
 ```  
 
-3. Build and push the docker image (you a free and disposable public registry like [*ttl.sh*](https://ttl.sh/))
+3. Build and push the docker image (you can use a free and disposable public registry like [*ttl.sh*](https://ttl.sh/))
 ```bash
 docker build -t ttl.sh/ctf1:latest . && docker push ttl.sh/ctf1:latest
 ```  

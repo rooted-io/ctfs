@@ -145,7 +145,7 @@ metadata:
 spec:
   containers:
   - name: k8sctf1-container
-    image: ttl.sh/ctf1:damn
+    image: ttl.sh/ctf1:latest
 EOF
 ```  
 5. retrieve the list of running podss

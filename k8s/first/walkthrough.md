@@ -97,7 +97,7 @@ kubectl auth can-i create pods --namespace=medium
 yes
 ```  
 
-At this point you can attempt to create a pod to that reads and print the secrets for the *medium* namespace.  
+At this point you can attempt to read the secrets from a pod deployed to the *medium* namespace.  
 Proceed as follow:  
 1. Create the following dockerfile  
 

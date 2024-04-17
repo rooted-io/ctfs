@@ -15,6 +15,11 @@ Spin up the lab and have fun:
 sh start.sh
 ```  
 
+To stop and delete the lab:  
+```bash
+sh stop.sh
+```  
+
 ## Hints
 
 We highly recommend resolving the challenges without hints and instructions.  

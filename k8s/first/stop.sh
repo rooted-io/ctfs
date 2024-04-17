@@ -1,0 +1,1 @@
+minikube delete --profile k8s-ctf-1

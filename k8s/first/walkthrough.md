@@ -72,10 +72,8 @@ Let's try to get all the resources we can in the *medium* namespace:
 kubectl -n medium get all
 
 NAME                                 READY   STATUS             RESTARTS        AGE
-busybox-deployment-6986fcbcb-5fp6n   0/1     CrashLoopBackOff   9 (2m15s ago)   23m
-busybox-deployment-6986fcbcb-8rtx5   0/1     CrashLoopBackOff   9 (2m21s ago)   23m
-nginx-deployment-6b7f675859-d4nlh    1/1     Running            0               23m
-nginx-deployment-6b7f675859-gpqk2    1/1     Running            0               23m
+nginx-deployment-6b7f675859-ph8t5    1/1     Running            0               23m
+nginx-deployment-6b7f675859-vz56h    1/1     Running            0               23m
 Error from server (Forbidden): replicationcontrollers is forbidden: User "ctf1" cannot list resource "replicationcontrollers" in API group "" in the namespace "medium"
 Error from server (Forbidden): services is forbidden: User "ctf1" cannot list resource "services" in API group "" in the namespace "medium"
 Error from server (Forbidden): daemonsets.apps is forbidden: User "ctf1" cannot list resource "daemonsets" in API group "apps" in the namespace "medium"
@@ -88,6 +86,16 @@ Error from server (Forbidden): jobs.batch is forbidden: User "ctf1" cannot list 
 ```  
 It seems that we are able to retrieve the list of pods in this namespace.  
 
+Are we able to exec into one?
+```bash
+kubectl -n medium exec nginx-deployment-6b7f675859-ph8t5 -- /bin/sh
+
+Error from server (Forbidden): pods "nginx-deployment-6b7f675859-ph8t5" is forbidden: User "ctf1" cannot create resource "pods/exec" in API group "" in the namespace "medium"
+```  
+nope.  
+At this point, put on your hacker hat and try to engage in some adversarial thinking 🤔  
+
+
 `hint`: try to play around with **kubectl auth can-i** in order to understand what you can do in this namespace.  
 
 After a while, you will discover that you are able to create pods in the *medium* namespace:  
@@ -97,7 +105,7 @@ kubectl auth can-i create pods --namespace=medium
 yes
 ```  
 
-At this point you can attempt to read the secrets from a pod deployed to the *medium* namespace.  
+Knowing this you can attempt to read the secrets from a pod deployed to the *medium* namespace.  
 Proceed as follow:  
 1. Create the following dockerfile  
 
@@ -165,7 +173,12 @@ Flag Secret: this is not the flag!
 DB Secret: CTF{medium-flag-zPBBTUPD2mXuZZU3}
 ```  
 
-Congrats, you pawned the second challenge!  🥳 🎉
+Congrats, you pawned the second challenge!  🥳 🎉  
+
+## Hard challenge
+
+**TO DO**  
+
 
 
 

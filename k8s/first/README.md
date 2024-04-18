@@ -9,7 +9,12 @@ Welcome to your first Kubernetes-native Capture the Flag! ☸ 🏴
 - *minikube*
 
 ## Instructions
-The challenges are divided into different namespaces on the cluster, your goal is to find all the flags!  
+The challenges are divided into different namespaces on the cluster, based upon the difficulty:  
+- `easy` 
+- `medium` 
+- `hard`  
+
+your goal is to find all the flags (kubernetes secrets)!  
 Spin up the lab and have fun:  
 ```bash
 sh start.sh
